@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(75, 30, 117);
+    color: white;
+}
+
+
+nav {
+    display: flex;
+    padding: 20px 60px;
+    border-bottom: 3px solid black;
+}
+
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style-type: none;
+    margin-left: auto;
+    padding: 0;
+}
+
+.list-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.toggle::before {
+    content: "";
+    width: 50px;
+    border: 3px solid white;
+    transform: translateY(-20px);
+    transition: 300ms;
+}
+
+.toggle {
+    position: relative;
+    width: 63px;
+    max-height: 0;
+    border: 3px solid white;
+    transition: 300ms;
+}
+
+.toggle.closeBtn {
+    border: 0;
+}
+
+.toggle::after {
+    content: "";
+    width: 50px;
+    border: 3px solid white;
+    transform: translateY(10px);
+    transition: 300ms;
+}
+
+.toggle.closeBtn::before {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    transform: rotate(45deg);
+}
+
+.toggle.closeBtn::after {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    transform: rotate(-45deg);
+}
+
+.toggle.closeBtn::before, .toggle.closeBtn::after {
+    transition: 700ms;
+
+}
+
+.toggle, .toggle::before, .toggle::after {
+    cursor: pointer;
+    display: none;
+    margin: auto 0 auto 0;
+}
+
+.nav-list.open {
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.nav-list.open + .toggle {
+    margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+    nav {
+        justify-content: space-between;
+    }
+
+    .nav-list {
+        display: none;
+    }
+
+    .toggle, .toggle::before, .toggle::after {
+        display: block;
+    }
+}
