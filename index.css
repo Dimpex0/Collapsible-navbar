@@ -11,7 +11,9 @@ body {
 nav {
     display: flex;
     padding: 20px 60px;
+    align-items: center;
     border-bottom: 3px solid black;
+    z-index: 1000;
 }
 
 
@@ -29,67 +31,81 @@ nav {
     text-decoration: none;
 }
 
-.toggle::before {
-    content: "";
-    width: 50px;
-    border: 3px solid white;
-    transform: translateY(-20px);
-    transition: 300ms;
-}
-
-.toggle {
-    position: relative;
-    width: 63px;
-    max-height: 0;
-    border: 3px solid white;
-    transition: 300ms;
-}
-
-.toggle.closeBtn {
-    border: 0;
-}
-
-.toggle::after {
-    content: "";
-    width: 50px;
-    border: 3px solid white;
-    transform: translateY(10px);
-    transition: 300ms;
-}
-
-.toggle.closeBtn::before {
-    position: absolute;
-    left: 0;
-    top: 1px;
-    transform: rotate(45deg);
-}
-
-.toggle.closeBtn::after {
-    position: absolute;
-    left: 0;
-    top: 2px;
-    transform: rotate(-45deg);
-}
-
-.toggle.closeBtn::before, .toggle.closeBtn::after {
-    transition: 700ms;
-
-}
-
-.toggle, .toggle::before, .toggle::after {
-    cursor: pointer;
-    display: none;
-    margin: auto 0 auto 0;
-}
-
-.nav-list.open {
+.nav-button::before {
     display: block;
-    margin: auto;
-    margin-top: 50px;
+    content: "";
+    width: 50px;
+    height: 3px;
+    background-color: white;
+    transform: translateY(-10px);
 }
 
-.nav-list.open + .toggle {
-    margin: 0;
+.nav-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: white;
+}
+
+.nav-button::after {
+    display: block;
+    content: "";
+    width: 50px;
+    height: 3px;
+    background-color: white;
+    transform: translateY(8px);
+}
+
+.nav-button {
+    display: none;
+}
+
+.nav-button-container {
+    position: relative;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+}
+
+.nav-bar.open {
+    align-items: unset;
+}
+
+.nav-bar.open .nav-icon {
+    display: none;
+}
+
+.nav-bar.open .nav-button-container {
+    margin-left: auto;
+}
+
+.nav-bar.open .nav-button {
+    width: 0;
+    height: 0;
+}
+
+.nav-bar.open .nav-button::before {
+    position: absolute;
+    transform: rotate(45deg);
+    top: 2px;
+    width: 30px;
+    transition: 400ms;
+}
+
+.nav-bar.open .nav-button::after {
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 2px;
+    width: 30px;
+    transition: 400ms;
+}
+
+.nav-bar.open .nav-list {
+    display: block;
+    margin-top: 50px;
 }
 
 @media screen and (max-width: 500px) {
@@ -101,7 +117,7 @@ nav {
         display: none;
     }
 
-    .toggle, .toggle::before, .toggle::after {
+    .nav-button {
         display: block;
     }
 }

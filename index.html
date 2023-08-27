@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <nav>
+    <nav class="nav-bar">
         <h1 class="nav-icon">Nav</h1>
         <ul class="nav-list">
             <li class="list-item"><a href="#">Link 1</a></li>
@@ -15,7 +15,9 @@
             <li class="list-item"><a href="#">Link 3</a></li>
             <li class="list-item"><a href="#">Link 4</a></li>
         </ul>
-        <div onclick="toggle()" class="toggle"></div>
+        <div onclick="toggle()" class="nav-button-container">
+            <div class="nav-button"></div>
+        </div>
     </nav>
 
     <script src="./index.js"></script>
